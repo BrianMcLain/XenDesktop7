@@ -15,6 +15,8 @@ ConvertFrom-StringData @'
     UpdatingRequireTwoTickets   = Updating use two tickets '{0}'.
     SettingZones                 = Setting zones '{0}'.
     UpdatingZones                 = Updating zones '{0}'.
+    SettingFarms                  = Setting farms '{0}'.
+    UpdatingFarms                 = Updating farms '{0}'.
     SettingEnabledOnDirectAccess = Setting direct access '{0}'.
     UpdatingEnabledOnDirectAccess = Updating direct access '{0}'.
     CallingSetDSOptimalGatewayForFarms = Calling Set-DSOptimalGatewayForFarms.

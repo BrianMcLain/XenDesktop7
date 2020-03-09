@@ -218,6 +218,13 @@ function Set-TargetResource
             else {
                 Write-Verbose -Message ($localizedData.UpdatingZones -f ($Zones -join ','))
             }
+            if (!($PSBoundParameters.ContainsKey('Farms'))) {
+                $Zones = [System.String[]]$Gateway.Farms
+                Write-Verbose -Message ($localizedData.SettingFarms -f ($Farms -join ','))
+            }
+            else {
+                Write-Verbose -Message ($localizedData.UpdatingFarms -f ($Farms -join ','))
+            }
             if (!($PSBoundParameters.ContainsKey('EnabledOnDirectAccess'))) {
                 $EnabledOnDirectAccess = [System.Boolean]$Gateway.EnabledOnDirectAccess
                 Write-Verbose -Message ($localizedData.SettingEnabledOnDirectAccess -f $EnabledOnDirectAccess)
