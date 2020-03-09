@@ -1,0 +1,9 @@
+
+[ClassVersion("1.0.0.0"), FriendlyName("XD7StoreFrontCitrixAGBasicOptions")]
+class VE_XD7StoreFrontCitrixAGBasicOptions : OMI_BaseResource
+{
+	[Key, Description("Citrix Storefront Authentication Service IIS Virtual Path")] String VirtualPath;
+	[Key, Description("Citrix Storefront Autentication Service IIS Site Id")] Uint64 SiteId;
+	[Write, Description("Specifies the credential validation mode to use for authentication"), ValueMap{"Password","Kerberos","Auto"}, Values{"Password","Kerberos","Auto"}] String CredentialValidationMode;
+};
+
