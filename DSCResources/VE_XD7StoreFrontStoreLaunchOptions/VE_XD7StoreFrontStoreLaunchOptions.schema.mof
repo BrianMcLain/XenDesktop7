@@ -1,0 +1,17 @@
+
+[ClassVersion("1.0.0.0"), FriendlyName("XD7StoreFrontStoreLaunchOptions")]
+class VE_XD7StoreFrontStoreLaunchOptions : OMI_BaseResource
+{
+	[Key, Description("Citrix Storefront Store Service IIS Virtual Path")] String VirtualPath;
+	[Write, Description("Citrix Storefront Store Service IIS Site Id")] Uint64 SiteId;
+	[Write, Description("Specifies the type of address to use in the .ica launch file"), ValueMap{"Dns","DnsPort","Dot","DotPort","IPV4","IPV4Port","NoChange","Uri"}, Values{"Dns","DnsPort","Dot","DotPort","IPV4","IPV4Port","NoChange","Uri"}] String AddressResolutionType;
+	[Write, Description("Specifies TLS settings")] String RequestIcaClientSecureChannel;
+	[Write, Description("Redirect special folders such as Documents, Computer and the Desktop")] Boolean AllowSpecialFolderRedirection;
+	[Write, Description("Specifies whether or not the use of launch references is enforced")] Boolean RequireLaunchReference;
+	[Write, Description("Specifies whether or not a Web Interface-generated ID must be passed in the clientname entry of an .ica launch file")] Boolean OverrideIcaClientName;
+	[Write, Description("Specifies whether a logon ticket must be duplicated in a logon ticket entry or placed in a separate .ica launch file ticket entry only")] Boolean OverlayAutoLoginCredentialsWithTicket;
+	[Write, Description("Specifies whether or not to ignore the address provided by the Citrix client")] Boolean IgnoreClientProvidedClientAddress;
+	[Write, Description("Specifies whether XenApp load bias should be used")] Boolean SetNoLoadBiasFlag;
+	[Write, Description("The Vda logon data provider to use during launch")] String VdaLogonDataProvider;
+};
+

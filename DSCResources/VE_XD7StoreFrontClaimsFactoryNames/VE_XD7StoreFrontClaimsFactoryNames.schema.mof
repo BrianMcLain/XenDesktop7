@@ -1,0 +1,9 @@
+
+[ClassVersion("1.0.0.0"), FriendlyName("XD7StoreFrontClaimsFactoryNames")]
+class VE_XD7StoreFrontClaimsFactoryNames : OMI_BaseResource
+{
+	[Key, Description("The name of the claims factory to use")] String ClaimsFactoryName;
+	[Key, Description("Citrix Storefront Authentication Service IIS Virtual Path")] String VirtualPath;
+	[Write, Description("Citrix Storefront Authentication Service IIS Site Id")] Uint64 SiteId;
+};
+
