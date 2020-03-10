@@ -23,9 +23,14 @@ function Get-TargetResource
 		[System.String]
 		$VirtualPath,
 
-		[parameter(Mandatory = $true)]
+		[parameter()]
 		[System.UInt64]
-		$SiteId
+		$SiteId=1,
+
+        [Parameter(Mandatory)]
+		[ValidateSet("Password","Kerberos","Auto")]
+		[System.String]
+		$CredentialValidationMode
 	)
 
 	Import-Module Citrix.StoreFront.Authentication -ErrorAction Stop -Verbose:$false;
@@ -35,7 +40,7 @@ function Get-TargetResource
 	$returnValue = @{
 		VirtualPath = $VirtualPath
 		SiteId = $SiteId
-		CredentialValidationMode = [System.String]$CredentialValidationModeValue
+		CredentialValidationMode = $CredentialValidationModeValue
 	}
 
 	$returnValue
@@ -51,10 +56,11 @@ function Set-TargetResource
 		[System.String]
 		$VirtualPath,
 
-		[parameter(Mandatory = $true)]
+		[parameter()]
 		[System.UInt64]
-		$SiteId,
+		$SiteId=1,
 
+        [Parameter(Mandatory)]
 		[ValidateSet("Password","Kerberos","Auto")]
 		[System.String]
 		$CredentialValidationMode
@@ -78,10 +84,11 @@ function Test-TargetResource
 		[System.String]
 		$VirtualPath,
 
-		[parameter(Mandatory = $true)]
+		[parameter()]
 		[System.UInt64]
-		$SiteId,
+		$SiteId=1,
 
+        [Parameter(Mandatory)]
 		[ValidateSet("Password","Kerberos","Auto")]
 		[System.String]
 		$CredentialValidationMode
