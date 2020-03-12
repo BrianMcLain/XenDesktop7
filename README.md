@@ -964,6 +964,74 @@ Configuration XD7StoreFrontBaseUrlExample {
 }
 ```
 
+## XD7StoreFrontCitrixAGBasicOptions
+
+Configure CitrixAGBasic protocol options
+
+### Syntax
+
+```
+XD7StoreFrontCitrixAGBasicOptions [string]
+{
+    VirtualPath = [String]
+    SiteId = [Uint64]
+    [ CredentialValidationMode = [String] { Password | Kerberos | Auto } ]
+}
+```
+
+### Properties
+
+* **VirtualPath**: Citrix Storefront Authentication Service IIS Virtual Path.
+* **SiteId**: Citrix Storefront Autentication Service IIS Site Id.
+* **CredentialValidationMode**: Specifies the credential validation mode to use for authentication.
+
+### Configuration
+
+```
+Configuration XD7Example {
+    Import-DSCResource -ModuleName XenDesktop7 {
+    XD7StoreFrontCitrixAGBasicOptions XD7StoreFrontCitrixAGBasicOptionsExample {
+        CredentialValidationMode = 'Kerberos'
+        VirtualPath = '/Citrix/prodauth'
+        SiteId = 1
+    }
+}
+```
+
+## XD7StoreFrontClaimsFactoryNames
+
+Configures the claims factory names
+
+### Syntax
+
+```
+XD7StoreFrontClaimsFactoryNames [string]
+{
+    ClaimsFactoryName = [String]
+    VirtualPath = [String]
+    SiteId = [Uint64]
+}
+```
+
+### Properties
+
+* **ClaimsFactoryName**: The name of the claims factory to use.
+* **VirtualPath**: Citrix Storefront Authentication Service IIS Virtual Path.
+* **SiteId**: Citrix Storefront Authentication Service IIS Site Id.
+
+### Configuration
+
+```
+Configuration XD7Example {
+    Import-DSCResource -ModuleName XenDesktop7
+    XD7StoreFrontClaimsFactoryNames XD7StoreFrontClaimsFactoryNamesExample {
+        ClaimsFactoryName = 'FASClaimsFactory'
+        VirtualPath = '/Citrix/prodauth'
+        SiteId = 1
+    }
+}
+```
+
 ## XD7StoreFrontExplicitCommonOptions
 
 Set the ExplicitCommon Authentication service protocol options.
@@ -1506,6 +1574,56 @@ Configuration XD7Example {
        Servers = 'Server10','Server11'
        FarmType = 'XenApp'
        TransportType = 'HTTPS'
+    }
+}
+```
+
+## XD7StoreFrontStoreLaunchOptions
+
+Configure options used by a Store when launching an application or desktop on XenApp and XenDesktop
+
+### Syntax
+
+```
+XD7StoreFrontStoreLaunchOptions [string]
+{
+    VirtualPath = [String]
+    SiteId = [Uint64]
+    [ AddressResolutionType = [String] { Dns | DnsPort | Dot | DotPort | IPV4 | IPV4Port | NoChange | Uri } ]
+    [ RequestIcaClientSecureChannel = [String] ]
+    [ AllowSpecialFolderRedirection = [Boolean] ]
+    [ RequireLaunchReference = [Boolean] ]
+    [ OverrideIcaClientName = [Boolean] ]
+    [ OverlayAutoLoginCredentialsWithTicket = [Boolean] ]
+    [ IgnoreClientProvidedClientAddress = [Boolean] ]
+    [ SetNoLoadBiasFlag = [Boolean] ]
+    [ VdaLogonDataProvider = [String] ]
+}
+```
+
+### Properties
+
+* **VirtualPath**: Citrix Storefront Store Service IIS Virtual Path.
+* **SiteId**: Citrix Storefront Store Service IIS Site Id.
+* **AddressResolutionType**: Specifies the type of address to use in the .ica launch file.
+* **RequestIcaClientSecureChannel**: Specifies TLS settings.
+* **AllowSpecialFolderRedirection**: Redirect special folders such as Documents, Computer and the Desktop.
+* **RequireLaunchReference**: Specifies whether or not the use of launch references is enforced.
+* **OverrideIcaClientName**: Specifies whether or not a Web Interface-generated ID must be passed in the clientname entry of an .ica launch file.
+* **OverlayAutoLoginCredentialsWithTicket**: Specifies whether a logon ticket must be duplicated in a logon ticket entry or placed in a separate .ica launch file ticket entry only.
+* **IgnoreClientProvidedClientAddress**: Specifies whether or not to ignore the address provided by the Citrix client.
+* **SetNoLoadBiasFlag**: Specifies whether XenApp load bias should be used.
+* **VdaLogonDataProvider**: The Vda logon data provider to use during launch.
+
+### Configuration
+
+```
+Configuration XD7Example {
+    Import-DSCResource -ModuleName XenDesktop7
+    XD7StoreFrontStoreLaunchOptions XD7StoreFrontStoreLaunchOptionsExample {
+        VirtualPath = "/Citrix/prod"
+        SiteID = 1
+        VdaLogonDataProvider = "FASLogonDataProvider"
     }
 }
 ```
